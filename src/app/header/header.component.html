@@ -1,0 +1,72 @@
+<div id="main_menu" onload=" product_price();">
+<nav class="navbar navbar-expand-lg navbar-light" >
+    <div class="mx-auto my-2 order-0 order-md-0 order-lg-1 position-relative logo">
+        <a class="mx-auto" routerLink="/home">
+            <img id="hover_logo" src="./assets/images/logo2.jpg">
+        </a>
+        <button class="navbar-toggler" id="menu_button" type="button" data-toggle="collapse" data-target="#myNavbarToggler7"
+            aria-controls="myNavbarToggler7" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbarToggler7">
+            <ul class="navbar-nav mx-auto" style="list-style-type:none;">
+                <li class="nav-item">
+                   <a class="nav-link" onclick="getcategoryname1();" routerLink="../home"  >HOME </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="../aboutus" >ABOUT </a>
+                </li>
+                <a class="d-none d-lg-block" routerLink="../home" onmouseover="submenu1();"><img id="logo" src="./assets/images/logo2.jpg"></a>
+                <li class="nav-item"   id="nav-item3">
+                    <a class="nav-link" onmouseover="submenu1();"  onclick="location.href='products'" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PRODUCTS <i class="fa fa-caret-down" style="font-size: 1vw;"></i></a>
+                    <ul class="dropdown-menu" style=" border: 0px solid white;">
+                        <li *ngFor="let post of categorylist" ><a id="{{post.name}}" data-toggle="dropdown1" (mouseenter)="getcategoryid(post._id);getsingleproducttype();" onmouseover="reply_click(this.id);submenu();" routerLink="../filter/category" (click)="getcategory(post._id); " onclick="getbydefaultcategorytype();reply_click(this.id);submenu();"> {{post.name}}</a>
+                            <ul class="submenu dropdown-menu" id="inner_submenu" style="display: none;">
+                                <li *ngFor="let post of subcategorylist"><a style="cursor: pointer;"class="dropdown-item" id="{{post._id}}" (click)="getcategory(post._id);">{{post.subCategory}}</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"  routerLink="../contactus" >CONTACT US </a>
+                </li>
+            </ul>
+        </div>
+   </nav>
+</div>
+<div id="mob_menu">
+    <nav class="navbar navbar-expand-lg navbar-light" >
+        <div class="mx-auto my-2 order-0 order-md-0 order-lg-1 position-relative logo">
+            <a class="mx-auto" routerLink="/home">
+                <img id="hover_logo" src="./assets/images/logo2.jpg">
+            </a>
+            <button class="navbar-toggler" id="menu_button" type="button" data-toggle="collapse" data-target="#myNavbarToggler7"
+                aria-controls="myNavbarToggler7" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbarToggler7">
+                <ul class="navbar-nav mx-auto" style="list-style-type:none;">
+                    <li class="nav-item">
+                       <a class="nav-link" onclick="getcategoryname1();" routerLink="../home">HOME </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="../aboutus">ABOUT </a>
+                    </li>
+                    <a class="d-none d-lg-block" routerLink="../home" onmouseover="submenu1();"><img id="logo" src="./assets/images/logo2.jpg"></a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> PRODUCTS </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" id="submenu_product" routerLink="../products" >All Products</a></li>
+                                <li *ngFor="let post of categorylist" ><a id="{{post.name}}" routerLink="../filter/category" (click)="getcategory(post._id);" onclick="reply_click(this.id);"> {{post.name}}</a></li>
+                           
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  routerLink="../contactus">CONTACT US </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>

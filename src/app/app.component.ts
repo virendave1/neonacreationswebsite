@@ -6,5 +6,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Leartswebsite';
+  title = 'NeonaCreations';
 }
+export const hostport = 'http://167.172.220.75:8089/';
+
+// export var tabledats = () =>{
+//   setTimeout(function(){  $('#arrivals').DataTable( {
+//     dom: 'Bfrtip',
+//     "scrollX": true,
+//     destroy: true,
+//    retrieve: true,
+//    pagingType: 'full_numbers',
+//    pageLength: 10,
+//    processing: true,
+//     buttons: [           
+//       // 'pageLength' 
+//     ]
+// } ); }, 1000); 
+// }

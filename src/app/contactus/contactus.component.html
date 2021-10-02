@@ -1,0 +1,88 @@
+<html>
+<head>
+</head>
+<body onload="getcategoryname1();">
+    <app-header></app-header>
+    <header class="contact_masthead">
+        <div class="container h-100">
+          <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+              <h1 class="font-weight-light" id="slide_about_head">Contact Us</h1>
+              <p class="lead" id="about_slide_subhead"><a routerLink="../home" style="color:#929292;text-decoration: none;font-weight: bold;">Home </a> > <a routerLink="../contactus" style="color:black;text-decoration: none;font-weight: bold;"> Contact us </a></p>
+            </div>
+          </div>
+        </div>
+      </header>
+<section class="Material-contact-section section-padding section-dark">
+    <div class="container">
+        <div class="row">
+            <!-- Section Titile -->
+            <div class="col-md-12 wow animated fadeInLeft" data-wow-delay=".2s">
+                <h1 class="section-title text-center" style="color:#212529;font-size: 50px;">Contact Us</h1>
+            </div>
+        </div>
+        <div class="row">
+        
+            <div class="container">
+            <div class="co-md-12 mt-3 text-center">
+            </div>
+            <div class="contact-form">
+              <form method="post"  #form="ngForm" enctype="multipart/form-data">
+                <p class="hint-text">We'd love to hear from you, please drop us a line if you've any query related to our products or services.</p>
+                <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="inputName" style="font-weight: bold;">Name</label>
+                  <input type="text" class="form-control"  #name  [(ngModel)]="nameTxt" name="name" id="inputName" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputName" style="font-weight: bold;">Phone No</label>
+                  <input type="text" class="form-control" #mobile  [(ngModel)]="mobileTxt" name="mobile"  id="inputName" required>
+                </div>
+                </div>
+                <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail" style="font-weight: bold;">Email Address</label>
+                  <input type="text" class="form-control"  #email  [(ngModel)]="emailTxt" name="email" id="inputEmail" required>
+                </div>
+                
+                <div class="form-group col-md-6">
+                  <label for="inputName" style="font-weight: bold;">Subject</label>
+                  <input type="text" class="form-control"  #subject  [(ngModel)]="subjectTxt" name="subject" id="inputName" required>
+                </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputMessage" style="font-weight: bold;">Message</label>
+                  <textarea class="form-control"  #message  [(ngModel)]="messageTxt" name="message" id="inputMessage" rows="5" required></textarea>
+                </div>
+                <button type="submit" [disabled]="!form.valid" (click)="insert(form.value);" id="contact_us_btn"><i class="fa fa-paper-plane"></i> Send Message</button>
+              </form>
+            </div>
+        </div>
+        <div class="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
+        <img id="contact_us_img" src="./assets/images/contact_img.jpg"/>  
+        </div>
+        <div class="col-md-6 mt-3 contact-widget-section2 wow animated fadeInLeft" data-wow-delay=".2s">
+             
+          <p id="contact_us_p1">So come join us on a journey of self-expression and discovery, who knows you may LOVE it!</p>
+                        <div class="find-widget" id="contact_us_a">
+                         Address : <a href="#" id="contact_us_address">4435 Berkshire Circle Knoxville ,UK </a>
+                        </div>
+                        <div class="find-widget" id="contact_us_a">
+                          Phone :  <a href="#" id="contact_us_address">  +099200 73686</a>
+                        </div>
+                        
+                        <!-- <div class="find-widget" id="contact_us_a">
+                          Website :  <a href="https://uny.ro" id="contact_us_address">www.leartshop.com</a>
+                        </div> -->
+                        <div class="find-widget" id="contact_us_a">
+                           Timing : <a href="#" id="contact_us_address">Mon to Sat: 10 AM - 8 PM</a>
+                        </div>
+        </div>
+        </div>
+        <button onclick="topfunctn()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+
+    </div>
+  </section>
+  <app-footer></app-footer>
+  </body>
+  </html>

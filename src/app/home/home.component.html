@@ -1,0 +1,285 @@
+<html>
+<head>
+</head>
+<body onload="getcategoryname1();loadmore();">
+
+    <app-header></app-header>
+<div class="container-fluid" id="section1" style="margin-top:3vw;">
+    <div class="row" >
+        <div class="col-sm-6">
+    <img id="candy" src="./assets/images/candy.png">
+    <p id="sec1_p">LIMITED EDITION</p>
+    <h1 id="sec1_h1">WELCOME TO NEONA CREATIONS</h1>
+    <button class="btn" id="sec1_btn" routerLink="../products" onclick="">SHOP NOW</button>
+   </div>
+   <div class="col-sm-6" id="home_row_1_img">
+    <img id="sec1_img" src="./assets/images/circle_banner_3.png"> 
+   </div>
+   <marquee>Neona Creations Neona Creations Neona Creations  Neona Creations  Neona Creations Neona Creations</marquee>
+</div>
+<div class="row">
+  <section id="features" class="blue">
+    <!-- <div class="content">
+      <div class="slider slider-1">
+           <div class="container">
+             <div class="row as">
+               <div class="col-lg-9">
+                 <div class="strat">
+                   <div class="image" >
+                   <img src="./assets/images/brand-08.png">
+                 </div>
+               </div>
+             </div>
+             <div class="col-lg-9">
+                <div class="strat">
+                  <div class="image"  >
+                  <img src="./assets/images/brand-05.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="strat">
+                  <div class="image"  >
+                  <img src="./assets/images/brand-04.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="strat">
+                  <div class="image"  >
+                  <img src="./assets/images/brand-07.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="strat">
+                  <div class="image"  >
+                  <img src="./assets/images/brand-06.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="strat">
+                  <div class="image" >
+                  <img src="./assets/images/brand-01.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="strat">
+                  <div class="image"  >
+                  <img src="./assets/images/brand-02.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="strat">
+                  <div class="image" >
+                  <img src="./assets/images/brand-03.png">
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="strat">
+                  <div class="image" >
+                  <img src="./assets/images/brand-04.png">
+                </div>
+              </div>
+            </div>
+           </div>
+          </div> 
+          </div>
+      </div> -->
+  </section>       
+  </div>
+</div> 
+<div class="container-fluid" >
+<div class="row" id="section_2" style="list-style-type:none;">
+    <div class="col-md-12"> 
+      <div class="card" id="project" style="box-shadow: 0 0 0 0 rgb(90 113 208 / 11%);
+      border: solid 1px transparent;">
+        <ul class="nav nav-tabs" style="border-bottom: 2px solid #2D4E44; ">
+          <li  class="" id="s1"><a href="#arrivals" id="New" (click)="getproductdata();"  data-toggle="tab"  onclick="getcategoryname(this.id);s1_button();"><span>New arrivals</span></a></li>
+          <li class="" id="s2"><a href="#items"  id="Sales"   (click)="getproductdata();" data-toggle="tab" onclick="getcategoryname(this.id);s2_button();"><span>Sale items</span></a></li>
+          <li class="" id="s3"><a href="#sellers" id="Best"   (click)="getproductdata();" data-toggle="tab" onclick="getcategoryname(this.id);s2_button();"><span>Best sellers</span></a></li>
+        </ul>
+        <div class="tab-content">
+          <div  class="tab-pane active" id="arrivals">
+            <ul class="row" >
+              <li class="col-12 col-md-6 col-lg-3" *ngFor="let post of bestproductlist.slice(0, products) ">
+                <span class="span_1">{{post.typeProduct}}</span>
+              <a (click)="product_id(post._id)" onclick="productname();"><img id="product_tab2_img3" class="ihv" src="{{post.image[0]}}"> </a>
+              <h4 id="products_tab2_p3" >{{post.name}}</h4>
+              <h5 id="p3_price" style="font-weight: bold;" *ngIf="pricestatus == true && post.price != undefined">Rs {{post.price}}</h5>
+           </li>
+               </ul>
+               <ul class="row">
+                <li class="col-sm-12" style="list-style-type:none;">
+                    <a  id="loadmore" style="cursor: pointer;" (click)="loadmore();"  ><i class="fa fa-plus"></i>Load More...</a>
+                </li>
+                </ul>
+
+              </div>
+              <div  class="tab-pane" id="items">
+               
+            <ul class="row">
+          
+              <li class="col-12 col-md-6 col-lg-3" *ngFor="let post of bestproductlist.slice(0, salesproducts) ">
+                <span class="span_1">{{post.typeProduct}}</span>
+              <a (click)="product_id(post._id)" onclick=""><img id="product_tab2_img3" class="ihv" src="{{post.image[0]}}"> </a>
+              <h4 id="products_tab2_p3" >{{post.name}}</h4>
+              <h5 id="p3_price" style="font-weight: bold;" *ngIf="pricestatus == true && post.price != undefined ">Rs {{post.price}}</h5>
+           </li>
+             </ul>
+
+             <ul class="row">
+              <li class="col-sm-12" style="list-style-type:none;">
+                  <a  id="loadmore" style="cursor: pointer;" (click)="loadmore1();"><i class="fa fa-plus"></i>Load More...</a>
+              </li>
+              </ul>
+        
+            </div>
+              <div  class="tab-pane" id="sellers">
+                <ul class="row">
+                  <li class="col-12 col-md-6 col-lg-3" *ngFor="let post of bestproductlist.slice(0, newproducts) ">
+                    <span class="span_1">{{post.typeProduct}}</span>
+                  <a (click)="product_id(post._id)" onclick=""><img id="product_tab2_img3" class="ihv" src="{{post.image[0]}}"> </a>
+                  <h4 id="products_tab2_p3" >{{post.name}}</h4>
+                  <h5 id="p3_price" style="font-weight: bold;" *ngIf="pricestatus == true && post.price != undefined">Rs {{post.price}}</h5>
+               </li>
+                 </ul>
+                 <ul class="row">
+                  <li class="col-sm-12" style="list-style-type:none;">
+                      <a  id="loadmore" style="cursor: pointer;" (click)="loadmore2();"><i class="fa fa-plus"></i>Load More...</a>
+                  </li>
+                  </ul>
+            </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+<div class="row" id="section_3" style="list-style-type:none;">
+    <div class="col-sm-6">
+        <img id="handmade_logo" src="./assets/images/handmade.png"/>
+        <h3 id="sec3_h">Making & crafting</h3>
+        <h5 id="sec3_h2">Handicraft shop</h5>
+        <p id="sect3_p">Crafting beautiful stuff with our own hands and the help from useful tools is a wonderful process, where you can enjoy yourself while pulling out some ideas and busy perfecting your work.</p>
+        <a routerLink="../products" style="cursor: pointer;" id="sect3_a">ONLINE STORE</a>
+    </div> 
+    <div class="col-sm-6">
+      <div id="learts-product-category-banner" >
+				<a routerLink="../products" style="text-decoration: none;">
+			<div class="zoomin frame">
+				<img  routerLink="../products" src="{{producttypeimage}}" alt="image" onclick="">			</div>
+
+			<div class="banner-content">
+				<h3 class="category-name" routerLink="../products" >NCBL-006</h3>
+
+									<p class="product-count" > {{newcount}} items</p>
+							</div>
+		</a>
+					<div class="description-banner right">
+				NEW COLLECTION			</div>
+			</div>
+      </div>
+</div>
+
+<div class="row" id="section_4" style="list-style-type:none;">
+  <div class="col-sm-6">
+    <div id="learts-product-category-banner">
+      <a href="#" style="text-decoration: none;">
+    <div class="zoomin_1 frame">
+      <img src="{{productsalesimage}}" routerLink="../products" alt="image" onclick="">			</div>
+
+    <div class="banner-content">
+      <h3 class="category-name_1" routerLink="../products" >NCWT-002</h3>
+
+                <p class="product-count_1">2 items</p>
+            </div>
+  </a>
+        <div id="cpf" class="description-banner right_1">SALE COLLECTION			</div>
+    </div>
+    </div>
+    <div class="col-sm-6">
+      <div id="learts-product-category-banner">
+        <a routerLink="../products" style="text-decoration: none;">
+      <div class="zoomin_2 frame">
+        <img src="{{productbestimage}}" alt="image" onclick="">			</div>
+  
+      <div class="banner-content">
+        <h3 class="category-name_2">NCBL-028</h3>
+                  <p class="product-count_2">1 items</p>
+              </div>
+    </a>
+          <div class="description-banner right_2">BEST COLLECTION</div>
+      </div>
+      </div>
+</div>
+<div class="row" id="section_5" style="list-style-type:none;" >
+  <div class="col-sm-6">
+    <div id="learts-product-category-banner">
+      <a routerLink="../products" style="text-decoration: none;">
+    <div class="zoomin_3 frame">
+      <img src="{{productbestsellerimage}}" alt="image" onclick="">			</div>
+
+    <div class="banner-content">
+      
+      <h3 class="category-name_3">NCBL-015</h3>
+
+                <p class="product-count_3">6 items</p>
+            </div>
+  </a>
+        <div class="description-banner right_3">BEST SELLERS</div>
+    </div>
+    </div>
+    <div class="col-sm-6">
+      <div id="learts-product-category-banner">
+        <a routerLink="../products" style="text-decoration: none;">
+      <div class="zoomin_4 frame">
+        <img src="{{productkeyholderimage}}" alt="image" onclick="">			</div>
+  
+      <div class="banner-content">
+        <h3 class="category-name_4">Sale up to 10%
+          on all items</h3>
+              </div>
+    </a>
+          <div class="description-banner right_4" style="cursor:pointer;text-decoration: none;" routerLink="products">ONLINE STORE</div>
+      </div>
+      </div>
+</div>
+<div class="row" id="section_6"  onload="product_price1();">
+  </div>
+  <div class="row" id="slider_row">
+    
+<div style="list-style-type:none;" id="testimonial4" class="carousel slide testimonial4_indicators testimonial4_control_button thumb_scroll_x swipe_x" data-ride="carousel" data-pause="hover" data-interval="5000" data-duration="2000">
+<div>
+  <ol class="carousel-indicators"> 
+    <li data-target="#testimonial4" *ngFor="let post of testimoniallist; let i = index" [attr.data-slide-to]="i"></li>
+    <!-- <li data-target="#testimonial4" data-slide-to="1" class="active"></li>
+    <li data-target="#testimonial4" data-slide-to="2"></li> -->
+  </ol>
+
+</div>
+  <div class="carousel-inner" style="padding-bottom: 3vw;">
+    <div class="carousel-item" *ngFor="let post of testimoniallist ; let index = index;let isFirst = first" [ngClass]="{active:isFirst}">
+      <div class="testimonial4_slide">
+        <p>{{post.message}}</p>
+        <img id="slider_img" src="{{post.image}}" alt="image"><h4>{{post.name}} {{post.length}}</h4>
+        <h4 style="color:#D2DBDF ;">/ {{post.designation}}</h4>
+      </div>
+    </div>
+  </div>
+  <a class="left carousel-control" href="#testimonial4" role="button" data-slide="prev">
+    <span class="fa fa-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#testimonial4" role="button" data-slide="next">
+    <span class="fa fa-chevron-right"></span>
+  </a>
+</div>
+<button onclick="topfunctn()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>   
+    </div>
+    <app-footer  ></app-footer>
+
+</body>
+</html>
+

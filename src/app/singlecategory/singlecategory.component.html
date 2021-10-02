@@ -1,0 +1,100 @@
+<html>
+<head>
+</head>
+<body  >
+
+    <app-header></app-header>
+    <header class="category_masthead" id="headpart">
+        <div class="container h-100">
+          <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+              <h1 class="font-weight-light" id="slide_head">Shop</h1>
+              <p class="lead" id="singleproduct_slide_subhead" style="color: white;"><a routerLink="../home" style="color:white;text-decoration: none;font-weight: bold;">Home </a> > <a routerLink="../products" style="color:white;text-decoration: none;font-weight: bold;">Products </a> ><a href="home" style="color:#a3a9a7;text-decoration: none;font-weight: bold;"> {{categoryname}} </a></p>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="row" id="product_section_2" style="list-style-type:none;">
+        <div class="col-md-12"> 
+          <div class="card" id="product_tabs" style="border:1px solid transparent;">
+            <ul class="nav nav-tabs" id="product_nav_tab" style="border-bottom: 2px solid #dee2e6; ">
+                <li  class="" id="product_s1"  ><a href="#all"    id="All"  (click)="getsingleproducttype();"  data-toggle="tab" onclick="getcategorytype(this.id);"><span style="color:black;">               ALL PRODUCTS          </span></a></li>
+                <li  class="" id="product_s2"  ><a href="#sales"   id="Sales"  (click)="getsingleproducttype();" data-toggle="tab" onclick="getcategorytype(this.id);" ><span style="color:black;">               SALES PRODUCTS         </span></a></li>
+                <li  class="" id="product_s3"  ><a href="#hot"   id="Hot"  (click)="getsingleproducttype();" data-toggle="tab" onclick="getcategorytype(this.id);" ><span style="color:black;">               HOT PRODUCTS         </span></a></li>
+                <li  class="" id="product_s1"  ><a href="#best"    id="Best" (click)="getsingleproducttype();" data-toggle="tab" onclick="getcategorytype(this.id);"><span style="color:black;">               BEST PRODUCTS         </span></a></li>
+                <li  class="" id="product_s1"  ><a href="#new"    id="New" (click)="getsingleproducttype();" data-toggle="tab" onclick="getcategorytype(this.id);"><span style="color:black;">               NEW  PRODUCTS        </span></a></li>
+
+                <div class="col-sm-3">
+                </div>
+            </ul>
+            <div class="tab-content" id="product_tab_content" style="background-color:#FFFFFF;">
+              <div  class="tab-pane active" id="all" >
+               <ul class="row" style="list-style-type:none;">
+                    <li class="col-12 col-md-6 col-lg-3" *ngFor="let post of table">
+                     
+                    <a><img id="product_pd_img1" class="ihv" src="{{post.image[0]}}" (click)="product_id(post._id)" > </a>
+                   <h4 id="p1"  style="color:#7E7E7E;" >{{post.name}} </h4>
+                   <h5 id="pro_p1_price" *ngIf="pricestatus == true && post.price != undefined">{{post.price}}</h5>
+                </li>
+               </ul>
+                  <!-- <input type="submit" id="more_option" value=" + More " onclick="more_products();">
+                  <input type="submit" id="more_option_1" value=" + More " onclick="more_products_1();"> -->
+              </div>
+                  <div  class="tab-pane " id="sales" >
+                    <ul class="row" style="list-style-type:none;">
+                         <li class="col-12 col-md-6 col-lg-3" *ngFor="let post of bestproductlist ">
+                         
+                         <a><img id="product_pd_img1" class="ihv" src="{{post.image[0]}}" (click)="product_id(post._id)" > </a>
+                        <h4 id="p1"  style="color:#7E7E7E;" >{{post.name}} </h4>
+                        <h5 id="pro_p1_price" *ngIf="pricestatus == true && post.price != undefined">{{post.price}}</h5>
+                     </li>
+                    </ul>
+                       <!-- <input type="submit" id="more_option" value=" + More " onclick="more_products();">
+                       <input type="submit" id="more_option_1" value=" + More " onclick="more_products_1();"> -->
+                       </div>
+                       <div  class="tab-pane " id="hot" >
+                        <ul class="row" style="list-style-type:none;">
+                             <li class="col-12 col-md-6 col-lg-3" *ngFor="let post of bestproductlist ">
+                              
+                             <a><img id="product_pd_img1" class="ihv" src="{{post.image[0]}}" (click)="product_id(post._id)" onclick="productname();"> </a>
+                            <h4 id="p1"  style="color:#7E7E7E;" >{{post.name}} </h4>
+                            <h5 id="pro_p1_price" *ngIf="pricestatus == true && post.price != undefined">{{post.price}}</h5>
+                         </li>
+                        </ul>
+                           <!-- <input type="submit" id="more_option" value=" + More " onclick="more_products();">
+                           <input type="submit" id="more_option_1" value=" + More " onclick="more_products_1();"> -->
+                           </div>
+                           <div  class="tab-pane " id="best" >
+                            <ul class="row" style="list-style-type:none;">
+                                 <li class="col-12 col-md-6 col-lg-3" *ngFor="let post of bestproductlist ">
+                                 
+                                 <a><img id="product_pd_img1" class="ihv" src="{{post.image[0]}}" (click)="product_id(post._id)" > </a>
+                                <h4 id="p1"  style="color:#7E7E7E;" >{{post.name}} </h4>
+                                <h5 id="pro_p1_price" *ngIf="pricestatus == true && post.price != undefined">{{post.price}}</h5>
+                             </li>
+                            </ul> 
+                               <!-- <input type="submit" id="more_option" value=" + More " onclick="more_products();">
+                               <input type="submit" id="more_option_1" value=" + More " onclick="more_products_1();"> -->
+                               </div>
+                               <div  class="tab-pane" id="new" >
+                                
+                                <ul class="row" style="list-style-type:none;">
+                                     <li class="col-12 col-md-6 col-lg-3" *ngFor="let post of bestproductlist ">
+                                      <!-- <span class="span_1">{{post.typeProduct}}</span> -->
+                                     <a><img id="product_pd_img1" class="ihv" src="{{post.image[0]}}" (click)="product_id(post._id)" > </a>
+                                    <h4 id="p1"  style="color:#7E7E7E;" >{{post.name}} </h4>
+                                    <h5 id="pro_p1_price" *ngIf="pricestatus == true && post.price != undefined">{{post.price}}</h5>
+                                 </li>
+                                </ul>
+                                 <!-- <input type="submit" id="more_option" value=" + More " onclick="more_products();">
+                                   <input type="submit" id="more_option_1" value=" + More " onclick="more_products_1();"> -->
+                                   </div>
+          </div>
+        </div>
+      </div>
+      <button onclick="topfunctn()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+
+    </div>
+    <app-footer></app-footer>
+</body>
+</html>

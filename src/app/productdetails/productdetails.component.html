@@ -1,0 +1,255 @@
+<html>
+<head>
+</head>
+<body >
+<app-header></app-header>
+<header class="mug_masthead" id="headpart" style="background-position: inherit;background-image: url('./assets/images/banner2.jpeg');" >
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-12 text-center">
+          <h1 class="font-weight-light" id="slide_head" style="display: none;">Shop</h1>
+          <p class="lead" id="slide_subhead"><a routerLink="../home" style="color:white;text-decoration: none;font-weight: bold;">Home </a> > <a routerLink="../products" style="color:white;text-decoration: none;font-weight: bold;">Products </a> >  <a routerLink="../#" style="color:#a3a9a7;text-decoration: none;font-weight: bold;">{{this.ProdnameTxt}}</a></p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="row" style="list-style-type:none;">
+      <div class="col-sm-4" id="pd_s1">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="ProductslideConfig" (init)="slickInit($event)"
+        (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+        <div ngxSlickItem *ngFor="let slide of productimage" class="slide">    
+            <div class="slide-content"> <img id="productdetails_slider_image"src="{{slide}}"/></div>
+        </div>
+        </ngx-slick-carousel>
+        </div>
+      <div class="col-sm-6" id="pd_s1_c2">
+          <p id="pd_h1">{{this.ProdnameTxt}}</p>
+          <p id="pd_h2" *ngIf="pricestatus == true && this.Prodprice != undefined">Rs. {{this.Prodprice}}</p>
+          <p id="pd_p">{{this.content}}</p>
+          <button  id="get_product_btn"  data-target="#modal" data-toggle="modal" >Get Product</button>
+          <!-- <h6 id="pd_s1_h6">BRANDS</h6>
+          <div class="row" id="pd_s1_brand">
+          <div class="col-sm-3" id="pd_s1_brand_1">
+            <img id="brand1" src="./assets/images/p1_b1.png"/>
+            </div>
+            <div class="col-sm-3" id="pd_s1_brand_1">
+                <img src="./assets/images/p2_b2.png"/>
+            </div>
+        </div> -->
+      </div>
+      <div class="modal fade" id="modal" tabindex="-1" role="modal" aria-labelledby="modal-label" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-label">Please Fill The Following Details:-</h4>
+                    <button type="button"  #closebutton class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                <form class="shake" role="form" method="post"  #form="ngForm" enctype="multipart/form-data" style="width:100%;" id="contactForm" name="contact-form" data-toggle="validator">
+                  <div class="form-group label-floating">
+                    <label class="control-label" for="name">Name :</label>
+                    <input class="form-control " id="name" type="text"  #name  [(ngModel)]="nameTxt" name="name" required data-error="Please enter your name">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group ">
+                    <label class="control-label" for="email">Email :</label>
+                    <input class="form-control" id="email" type="text" #email  [(ngModel)]="emailTxt" name="email" required data-error="Please enter your email">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group label-floating">
+                    <label class="control-label">Phone No</label>
+                    <input class="form-control" id="ph_number" type="text" #contact  [(ngModel)]="mobileTxt" name="contact" required data-error="Please enter your phone number">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group label-floating" style="display: none;">
+                    <label class="control-label">Product Name :</label>
+                    <input class="form-control" id="ph_number" type="text" #productName  [(ngModel)]="pname" name="productName"  [value]="pname" required data-error="Please enter your phone number">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group label-floating" style="display: none;">
+                    <label class="control-label">Product Id :</label>
+                    <input class="form-control" id="ph_number" type="text" #productId   [(ngModel)]="Id" name="productId" required data-error="Please enter your Product Id"  [value]="Id">
+                    <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-group label-floating">
+                      <label for="message" class="control-label">Message :</label>
+                      <textarea class="form-control" rows="3" id="address"  #message  [(ngModel)]="messageTxt" name="message" required data-error="Write your message"></textarea>
+                      <div class="help-block with-errors"></div>
+                  </div>
+                  <div class="form-submit mt-4">
+                      <button class="btn btn-common" type="submit" id="form-submit" [disabled]="!form.valid" (click)="insert(form.value);" > Submit</button>
+                      <div id="msgSubmit" class="h3 text-center hidden"></div>
+                      <div class="clearfix"></div>
+                  </div>
+              </form>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+      </div>
+      <div class="row" >
+          <div class="col-sm-4" id="pd_s2">
+          </div>
+          <div class="col-sm-6">
+            <table class="product_meta">
+                <tbody>
+                    <!-- <tr class="sku_wrapper">
+                    <td class="label">SKU</td>
+                    <td class="sku value" itemprop="sku">{{this.Prodsku}}</td>
+                    </tr> -->
+            <tr class="posted_in"><td class="label">Category</td><td class="value"> <a href="" rel="tag">{{this.Prodcategory}}</a></td></tr>
+            <tr class="tagged_as" *ngIf="Prodtags != ''"><td class="label">Tag</td><td class="value"> <a href="#" rel="tag">{{this.Prodtags}}</a></td></tr>
+            
+        </tbody></table>
+        <div class="row">
+            <div class="col-sm-4">
+                <p id="s2_share"style="font-weight: bold;">Share on</p>
+               
+            </div>
+            <div class="col-sm-3" id="s1_share">
+                 <a style="color: black;" href="https://www.facebook.com/" target="_blank"><i style="cursor: pointer;color: black;" class="fa fa-facebook" ></i></a><a style="cursor: pointer;color: black;" href="https://twitter.com/i/flow/login" target="_blank"><i style="cursor: pointer;color: black;" class="fa fa-twitter"></i></a><a style="color: black;" href="https://www.pinterest.com/" target="_blank"><i style="cursor: pointer;color: black;" class="fa fa-pinterest"></i></a><a style="color: black;" href="https://www.gmail.com/" target="_blank"><i style="cursor: pointer;color: black;" class="fa fa-envelope"></i></a>
+                </div>
+        </div> 
+        </div>
+      </div>
+      <div class="row" style="border-bottom:1px solid #EFEFEF;">
+  
+      </div>
+        
+<div class="row" style="list-style-type:none;">
+    <div class="col-md-12"> 
+      <div class="card"  id="pd_section_2" style="border-bottom: 1px solid #EFEFEF;box-shadow: 0 0 0 0 rgb(90 113 208 / 11%);
+      ">
+        <ul class="nav nav-tabs" style="border-bottom: 1px solid transparent; ">
+          <!-- <li  class="" id="pd_tab1"><a  href="#description"  data-toggle="tab" ><span id="pd_tab_a">Description</span></a></li>
+          <li class="" id="pd_tab2"><a href="#brands"  data-toggle="tab" ><span id="pd_tab_a">Brands</span></a></li> -->
+          <li class="" id="pd_tab3"><a href="#information"  data-toggle="tab" ><span id="pd_tab_a">Additional information</span></a></li>
+          <li class="" id="pd_tab3"><a href="#reviews"  data-toggle="tab"><span id="pd_tab_a">Reviews (0)</span></a></li>
+        </ul>
+        <div class="tab-content"id="pd_tab_content" >
+          <!-- <div  class="tab-pane active" id="description">
+              <p id="tab1">{{this.content}}</p>
+
+              </div> -->
+              <!-- <div  class="tab-pane" id="brands">
+                  <div class="row" style="margin-bottom:2vw;">
+                      <div class="col-sm-4" id="tab2">
+                          <h1 id="pd_tab2_h">DIANA DAY</h1>
+                          <img src="./assets/images/brand-02.png"/>
+                      </div>
+                      <div class="col-sm-6" id="tab2_content">
+                        Most people are not ready to immediately buy upon seeing an online ad or visiting a new website about eCommerce. But that’s not the story with us. We are here to take the lead and tackle all challenges. By retargeting the subject, we’ve been able to reach out to more customers worldwide and become one of the most favored brands in the industry.
+                      </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4" id="tab2">
+                        <h1 id="pd_tab2_h">GASMINE</h1>
+                        <img src="./assets/images/brand-03.png"/>
+                    </div>
+                    <div class="col-sm-6" id="tab2_content" >
+                        We have recently started over a brand’s Facebook Ad campaign, and on average we have received a 409% return on our investment. Thanks to some Facebook retargeting campaigns, the number is reaching up to 777%! We have set an example for other brands about how digital marketing has helped to skyrocket the sales in the fashion industry.
+                    </div>
+                </div>
+
+            </div> -->
+            <div  class="tab-pane active" id="information">
+                <div class="row">
+                    <table class="table" id="product_color_tab3">
+                        <tbody><tr class="">
+                        <th class="label" id="table_color">Color</th>
+                        <td class="value" id="table_value"><p>{{this.Prodcolor}}</p>
+            </td>
+                    </tr>
+                </tbody></table>
+                </div>
+
+             </div>
+              <div  class="tab-pane" id="reviews">
+                <div id="reviews_tab" >
+                    <div id="comments">
+                        <div id="reviews_h"> Reviews		</div>
+                            <p id="reviews_sect">There are no reviews yet.</p>
+                            </div>
+                            <div id="review_form" ng-app="Appname">
+                                    <div id="respond" >Be the first to review “{{this.ProdnameTxt}}” </div>
+                                    <p id="customer_reviews">Your email address will not be published. Required fields are marked *</p>
+                                    <form  #form1="ngForm" enctype="multipart/form-data" name="review-form"> 
+                                      <div class="form-body">
+                                          <div class="card-body">
+                                              <div class="row pt-6">
+                                                  <div class="col-md-12">
+                                                      <div class="form-group" id="category_form">
+                                                          <label class="control-label"> Name <span class="required">*</span></label>
+                                                          <input type="text" #name  [(ngModel)]="reviewnameTxt" name="name" class="form-control" placeholder="User Name" required>                                    
+                                                       </div>
+                                                  </div> 
+                                                 
+                                              </div> 
+                                              <div class="row pt-6">
+                                         
+                                                  <div class="col-md-12">
+                                                      <div class="form-group" id="category_form">
+                                                          <label class="control-label">Email <span class="required">*</span></label>
+                                                          <input type="text" #email [(ngModel)]="reviewemailTxt" name="email" class="form-control" placeholder="Email" required>                                    
+                                                       </div>
+                                                  </div> 
+                                                  </div>
+                                              <div class="row pt-6">
+                                  
+                                                  <div class="col-md-12">
+                                                      <div class="form-group" id="category_form">
+                                                          <label class="control-label">Message <span class="required">*</span></label>
+                                                          <input type="text" #message [(ngModel)]="reviewmessageTxt" name="message" class="form-control" placeholder="Message" required>                                    
+                                                       </div>
+                                                  </div> 
+                                                  </div>
+                                              </div> 
+                                          <div class="form-actions">
+                                              <div class="card-body">
+                                                  <button type="submit" id="reviewform" [disabled]="!form1.valid" class="btn btn-success m-r-10" (click)="insertreview(form1.value);">  <i class="fa fa-check"></i> Add </button>
+                                                
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </form>
+                                </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <h1 id="pro_slider_header" >You Might Also Like</h1>
+    </div>
+  </div>
+<div class="row" style="list-style-type:none;">
+    <section id="products_features" class="blue">
+      <div class="slick-wrapper">
+        <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig" (init)="slickInit($event)"
+          (breakpoint)="breakpoint($event)" (afterChange)="afterChange($event)" (beforeChange)="beforeChange($event)">
+          <div ngxSlickItem *ngFor="let slide of productlist" class="slide">
+            <img id="pd_p_img" src="{{slide.image[0]}}" (click)="product_id(slide._id);getproduct();" alt="image" style="cursor:pointer;">
+            <h4 id="pd_p_name"  (click)="product_id(slide._id)">{{slide.name}}</h4>
+            <p id="pd_p_price" class="price" (click)="product_id(slide._id)" *ngIf="pricestatus == true && slide.price != undefined">Rs {{slide.price}}</p>
+          </div>
+        </ngx-slick-carousel>
+        
+        </div>
+     
+    </section>    
+    <button onclick="topfunctn()" id="myBtn" title="Go to top"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>   
+    </div>
+<app-footer></app-footer>
+</body>
+
+</html>
